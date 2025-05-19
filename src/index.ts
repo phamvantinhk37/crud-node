@@ -13,7 +13,9 @@ app.use(bodyParser.json());
 
 app.use("/api/product", router)
 
-mongoose.connect(MONGODB_URI)
+mongoose.connect(MONGODB_URI, {
+    dbName: process.env.DATABASE_NAME
+})
     .then(()=> {
         console.log("Connected to MongoDB");
         app.listen(port, () => {
